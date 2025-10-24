@@ -26,8 +26,8 @@ This section is mostly useful for facet authors, but surely is of value for face
 The following example just tries to show a facet structure and what it can do.
 
 Syntax here is that of [`flake.aspects`](https://github.com/vic/flake-aspects).
-resolved modules are be available at `flake.modules.<class>.niri-desktop`
-but people can also use `flake.aspects.niri-desktop` if desired (eg, as an aspect dependency).
+resolved modules are be available at `flake.modules.<class>.niri`
+but people can also use `flake.aspects.niri` if desired (eg, as an aspect dependency).
 
 ```nix
 # facets/niri.nix
@@ -78,7 +78,9 @@ In some dendritic module of yours:
 { inputs, ... }:
 {
   imports = [ inputs.denful.modules.flake.niri ];
+
   flake.aspects.my-laptop = {aspects, ...}: {
+    # features of all facets that contribute to the anarchy aspect
     includes = [ aspects.anarchy ];
   };
 }
